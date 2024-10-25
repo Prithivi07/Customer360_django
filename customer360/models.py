@@ -11,20 +11,20 @@ class Customer(models.Model):
         return str(self.id)
 
 class Interaction(models.Model):
-    CHANNEL_CHOICES= [
-        ('phone','Phone'),
-        ('sms','SMS'),
-        ('email','Email'),
-        ('letter','Letter'),
+    CHANNEL_CHOICES = [
+        ('phone', 'Phone'),
+        ('sms', 'SMS'),
+        ('email', 'Email'),
+        ('letter', 'Letter'),
     ]
 
     DIRECTION_CHOICES = [
-        ('inbound','Inbound'),
-        ('outbound','Outound'),
-   ]
+        ('inbound', 'Inbound'),
+        ('outbound', 'Outbound'),
+    ]
 
-   customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-   channel = models.CharField(max_length=15, choices = CHANNEL_CHOICES)
-   direction = models.CharField(max_length=15,choices=DIRECTION_CHOICES)
-   interaction_date = models.DateField(auto_now_add=True)
-   summary = models.TextField
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    channel = models.CharField(max_length=15, choices=CHANNEL_CHOICES)
+    direction = models.CharField(max_length=10, choices=DIRECTION_CHOICES)
+    interaction_date = models.DateField(auto_now_add=True)
+    summary = models.TextField()
